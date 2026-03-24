@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quiz Web</title>
+</head>
+<body>
+    <h1>Quiz Web</h1>
+
+    <h2>Jogar Single Player</h2>
+    <form action="/single" method="post">
+        Tema:
+        <select name="tema">
+            {% for t in temas %}
+                <option>{{ t }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        Dificuldade:
+        <select name="dificuldade">
+            <option>Fácil</option>
+            <option>Médio</option>
+            <option>Difícil</option>
+        </select><br><br>
+
+        Nome:
+        <input name="nome"><br><br>
+
+        Quantidade:
+        <input name="quantidade" type="number" min="1" value="3"><br><br>
+
+        <button>Jogar</button>
+    </form>
+
+    <h2>Jogar Multiplayer</h2>
+    <form action="/multi" method="post">
+        Tema:
+        <select name="tema">
+            {% for t in temas %}
+                <option>{{ t }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        Dificuldade:
+        <select name="dificuldade">
+            <option>Fácil</option>
+            <option>Médio</option>
+            <option>Difícil</option>
+        </select><br><br>
+
+        Jogador 1: <input name="nome1"><br><br>
+        Jogador 2: <input name="nome2"><br><br>
+
+        Quantidade:
+        <input name="quantidade" type="number" min="1" value="4"><br><br>
+
+        <button>Jogar</button>
+    </form>
+
+    {% if has_save %}
+        <h2>Retomar Jogo</h2>
+        <a href="/resume">Continuar progresso salvo</a>
+    {% endif %}
+
+    <h2>Ranking</h2>
+    <a href="/ranking">Ver ranking</a>
+
+    <h2>Gerenciar temas</h2>
+    <a href="/temas">Editar temas</a>
+</body>
+</html>

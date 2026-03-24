@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Single Player</title>
+</head>
+<body>
+
+<h1>{{ state.nome }} — {{ state.tema }} ({{ state.dificuldade }})</h1>
+<h2>Pergunta {{ state.index + 1 }} de {{ state.perguntas|length }}</h2>
+
+<form action="/single-answer" method="post">
+    <p>{{ state.perguntas[state.index].pergunta }}</p>
+    <input name="resposta">
+    <button>Enviar</button>
+</form>
+
+</body>
+</html>

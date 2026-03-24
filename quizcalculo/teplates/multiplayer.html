@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multiplayer</title>
+</head>
+<body>
+
+<h1>{{ state.tema }} ({{ state.dificuldade }})</h1>
+
+{% set atual = state.players[state.index % 2] %}
+
+<h2>Vez de: {{ atual }}</h2>
+<h3>Pergunta {{ state.index + 1 }} de {{ state.perguntas|length }}</h3>
+
+<form action="/multi-answer" method="post">
+    <p>{{ state.perguntas[state.index].pergunta }}</p>
+    <input name="resposta">
+    <button>Responder</button>
+</form>
+
+<h3>Placar</h3>
+<ul>
+    {% for p in state.players %}
+        <li>{{ p }}: {{ state.scores[p] }}</li>
+    {% endfor %}
+</ul>
+
+</body>
+</html>

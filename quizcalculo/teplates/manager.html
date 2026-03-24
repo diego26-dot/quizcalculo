@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerenciar Temas</title>
+</head>
+<body>
+
+<h1>Editar Temas</h1>
+
+<textarea id="editor" style="width:100%;height:400px;">
+{{ temas | tojson }}
+</textarea>
+
+<button onclick="save()">Salvar</button>
+
+<script>
+function save(){
+    fetch("/save-temas", {
+        method:"POST",
+        headers:{"Content-Type":"application/json"},
+        body:document.getElementById("editor").value
+    }).then(r=>r.json()).then(()=>{
+        alert("Temas salvos!");
+    });
+}
+</script>
+
+<a href="/">Voltar</a>
+
+</body>
+</html>
